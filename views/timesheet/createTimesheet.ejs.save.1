@@ -1,0 +1,47 @@
+                <div class="row lineItem">
+                        <div class="col-md-12">
+                                Date:
+                                <input  type="date" required>
+                                Time <span class="text-muted">(in minutes)</span>:
+                                <input type="number" name="time" required>
+                                <button type="button" class="btn btn-danger btn-sm">X</button>
+                        </div>
+                </div>
+                <div class="row lineItem">
+                        <div class="col-md-12">
+                                Date:
+                                <input  type="date" required>
+                                Time <span class="text-muted">(in minutes)</span>:
+                                <input type="number" name="time" required>
+                                <button type="button" class="btn btn-danger btn-sm">X</button>
+                        </div>
+                </div>
+<%- include('../header'); %>
+
+<div class="row">
+	<div class="col-md mb-4">
+		<h2>Create a new timesheet</h2>
+	</div>
+</div>
+
+<div id="lineItems" class="row">
+	<div class="col-md-4">
+		<h4 style="display:inline;" class="mr-2">Line Items</h4>
+		<button type="button" class="btn btn-primary btn-sm">Add</button>
+	</div>
+
+	<div class="col-md-12 mt-4">
+
+		<div class="row lineItem">
+			<div class="col-md-12">
+				Date:
+				<input  type="date" required>
+				Time <span class="text-muted">(in minutes)</span>:
+				<input type="number" name="time" required>
+				<button type="button" class="btn btn-danger btn-sm">X</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('../footer'); %>

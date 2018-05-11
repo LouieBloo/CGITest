@@ -1,0 +1,56 @@
+<% var desc = timesheet.sheetInfo.Description ? timesheet.sheetInfo.Description : "Empty";%>
+
+<%- include('../header'); %>
+
+<div class="row">
+	<div class="col-md mb-2">
+		<h2>Timesheet #<%=timesheet.sheetInfo.ID%> <a href="/timesheet/viewAll"><span class="btn btn-primary">Back</span></a></h2>
+	</div>
+</div>
+
+<div class="row mb-4">
+	<div class="col-12">
+		<p><b>Rate:</b> <%=timesheet.sheetInfo.Rate%></p>
+		<p><b>Total Minutes:</b><%=timesheet.sheetInfo.TotalTime%></p>
+		<p><b>Total Cost:</b> <%=timesheet.sheetInfo.TotalCost%></p>
+	</div>
+</div>
+
+<div class="row mb-4">
+	<div class="col-12">
+		<h4>Description</h4>
+		<p><%=desc%></p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md mb-2">
+		<h4>Line Items</h4>
+	</div>
+	<div class="col-12 mx-auto justify-content-center">
+		<table class="display hover mousePointer" id="lineItemTable" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Time</th>
+				</tr>
+			</thead>
+			<tbody>
+			<%timesheet.lineItems.forEach(function(element){%>
+				<tr>
+					<td><%=element.Date%></td>
+					<td><%=element.Time%></td>
+				</tr>
+			<%});%>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+<script>
+	$('#lineItemTable').DataTable({"order":[[0,"desc"]]});
+</script>
+
+
+<%- include('../footer'); %>

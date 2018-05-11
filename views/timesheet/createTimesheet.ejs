@@ -1,5 +1,8 @@
 <%- include('../header'); %>
 
+<!--Use Dependency injection for better css importing-->
+<link rel="stylesheet" type="text/css" href="/stylesheets/timesheet/createTimesheet.css">
+
 <div class="row">
 	<div class="col-md mb-2">
 		<h2>Create a new timesheet</h2>
@@ -8,12 +11,12 @@
 
 <div class="row">
 
-	<div id="lineItems" class="col-md-12 mt-4">
+	<div class="col-md-12 mt-4">
 		<form method="post" id="timesheetForm">
 			<div class="form-row mb-4">
-				<div class="col">
+				<div class="col-md-4 col">
 					<label for="rate">Rate:</label>
-					<input type="number" name="rate">
+					<input type="number" name="rate" id="rate" class="form-control" required>
 				</div>
 			</div>
 			
@@ -21,17 +24,33 @@
 				<h4>Line Items: <span class="addBtn" onclick="addLineItem();">+add</span></h4>
 			</div>
 
-			<%- include('../components/lineItem'); %>
-			<%- include('../components/lineItem'); %>
+			<div id="lineItems">
+				<%- include('../components/lineItem'); %>
+			</div>
 
 			<div class="form-row mt-4">
 				<div class="col">
-					<textarea name="comment" rows="4" cols="35" placeholder="Description"></textarea>
+					<textarea name="description" rows="4" cols="35" placeholder="Description (200 chars max)" maxlength="200" class="form-control"></textarea>
 				</div>
 			</div>
+
 			<div class="form-row mt-4">
+				<div class="col-12">
+					<p><b>Total Time: </b><span id="totalTime">0 mins</span></p>
+				</div>
+				<div class="col-12">
+					<p><b>Total Cost: </b><span id="totalCost">$0</span></p>
+				</div>
+			</div>
+
+			<div class="form-row">
 				<div class="col">
-					<input type="submit" class="mt-4 btn btn-success" value="Create">
+					<p class="text-danger" id="error"></p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col">
+					<input type="submit" class="mt-4 btn btn-success" value="Save">
 				</div>
 			</div>
 
@@ -44,6 +63,5 @@
 
 
 
-<script src="/javascripts/timesheet/createTimesheet.js"></script>
 
 <%- include('../footer'); %>

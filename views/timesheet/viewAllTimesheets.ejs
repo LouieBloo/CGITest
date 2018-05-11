@@ -1,0 +1,42 @@
+<%- include('../header'); %>
+
+<div class="row">
+	<div class="col-md mb-2">
+		<h2>All Timesheets <a href="/timesheet/create"><span class="btn btn-primary">New</span></a></h2>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12 mx-auto justify-content-center">
+		<table class="display hover mousePointer" id="timesheetTable" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Rate</th>
+					<th>Description</th>
+					<th>Total Time</th>
+					<th>Total Cost</th>
+				</tr>
+			</thead>
+			<tbody style="cursor:pointer;">
+			<%timeSheets.forEach(function(element){%>
+				<tr onclick="location.href = '/timesheet/view/<%=element.ID%>';">
+					<td><%=element.ID%></td>
+					<td><%=element.Rate%></td>
+					<td><%=element.Description%></td>
+					<td><%=element.TotalTime%></td>
+					<td><%=element.TotalCost%></td>
+				</tr>
+			<%});%>
+			</tbody>
+		</table>
+	</div>
+</div>
+		
+
+<script>
+	$('#timesheetTable').DataTable({"order":[[0,"desc"]]});
+</script>
+
+
+<%- include('../footer'); %>
